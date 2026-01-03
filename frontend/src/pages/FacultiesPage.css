@@ -1,0 +1,17 @@
+.faculties-container { min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.faculties-header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 16px 0; }
+.header-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+.header-left { display: flex; align-items: center; gap: 12px; }
+.header-left h1 { font-size: 24px; font-weight: 700; color: #333; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+.user-info { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: #f7f9fa; border-radius: 20px; }
+.logout-btn { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: #f5576c; color: white; border: none; border-radius: 20px; cursor: pointer; }
+.faculties-content { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+.content-banner { text-align: center; color: white; margin-bottom: 40px; }
+.content-banner h2 { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+.faculties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.faculty-card { background: white; border-radius: 16px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.faculty-card:hover { transform: translateY(-8px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+.faculty-icon { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.faculty-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #333; }
+.faculty-card p { font-size: 14px; color: #666; }
