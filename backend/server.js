@@ -66,14 +66,16 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Serve frontend static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/dist')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-  });
-}
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Serve frontend for all non-API routes
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api') || req.path.startsWith('/health') || req.path.startsWith('/socket.io')) {
+    return next();
+  }
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
