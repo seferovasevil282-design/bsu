@@ -59,9 +59,12 @@ function initializeSocket(io) {
         // Filter words
         const settings = await getSettings();
         let filteredContent = content;
-        settings.filteredWords.forEach(word => {
-          const regex = new RegExp(word, 'gi');
-          filteredContent = filteredContent.replace(regex, '*'.repeat(word.length));
+        const words = settings.filteredWords ? settings.filteredWords.split(',').map(w => w.trim()) : [];
+        words.forEach(word => {
+          if (word) {
+            const regex = new RegExp(word, 'gi');
+            filteredContent = filteredContent.replace(regex, '*'.repeat(word.length));
+          }
         });
 
         // Save message
@@ -138,9 +141,12 @@ function initializeSocket(io) {
         // Filter words
         const settings = await getSettings();
         let filteredContent = content;
-        settings.filteredWords.forEach(word => {
-          const regex = new RegExp(word, 'gi');
-          filteredContent = filteredContent.replace(regex, '*'.repeat(word.length));
+        const words = settings.filteredWords ? settings.filteredWords.split(',').map(w => w.trim()) : [];
+        words.forEach(word => {
+          if (word) {
+            const regex = new RegExp(word, 'gi');
+            filteredContent = filteredContent.replace(regex, '*'.repeat(word.length));
+          }
         });
 
         // Save message

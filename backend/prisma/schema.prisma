@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -92,7 +92,7 @@ model Settings {
   dailyTopic              String   @default("")
   groupChatDeletionHours  Int      @default(24)
   privateChatDeletionHours Int     @default(48)
-  filteredWords           String[] @default([])
+  filteredWords           String   @default("")
   updatedAt               DateTime @updatedAt
 
   @@map("settings")

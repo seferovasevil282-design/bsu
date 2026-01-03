@@ -126,17 +126,15 @@ router.patch('/settings/filtered-words', authenticateAdmin, async (req, res) => 
   try {
     const { filteredWords } = req.body;
 
-    if (!Array.isArray(filteredWords)) {
-      return res.status(400).json({ error: 'Filtr sözləri array olmalıdır' });
-    }
+    const wordsString = Array.isArray(filteredWords) ? filteredWords.join(',') : filteredWords;
 
     let settings = await prisma.settings.findFirst();
     if (!settings) {
-      settings = await prisma.settings.create({ data: { filteredWords } });
+      settings = await prisma.settings.create({ data: { filteredWords: wordsString } });
     } else {
       settings = await prisma.settings.update({
         where: { id: settings.id },
-        data: { filteredWords }
+        data: { filteredWords: wordsString }
       });
     }
 

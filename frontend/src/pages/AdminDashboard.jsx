@@ -37,7 +37,7 @@ const AdminDashboard = () => {
       setSettings(settingsRes.data);
       setRules(settingsRes.data.rules);
       setDailyTopic(settingsRes.data.dailyTopic);
-      setFilteredWords(settingsRes.data.filteredWords.join(', '));
+      setFilteredWords(settingsRes.data.filteredWords || '');
     } catch (error) {
       console.error('Load data error:', error);
     }
@@ -72,8 +72,7 @@ const AdminDashboard = () => {
 
   const updateFilteredWords = async () => {
     try {
-      const words = filteredWords.split(',').map(w => w.trim()).filter(Boolean);
-      await api.patch('/admin/settings/filtered-words', { filteredWords: words });
+      await api.patch('/admin/settings/filtered-words', { filteredWords });
       alert('Filtr sözləri yeniləndi');
     } catch (error) {
       console.error('Update filtered words error:', error);
